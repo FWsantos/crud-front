@@ -1,58 +1,44 @@
-<html ng-app="listaTelefonica">
+<!doctype html>
+<html lang="pt-br" ng-app="crud">
 <head>
-	<title>Lista Telefonica</title>
-	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
-	<style>
-		.jumbotron {
-			width: 400px;
-			text-align: center;
-			margin-top: 20px;
-			margin-left: auto;
-			margin-right: auto;
-		}
-		.table {
-			margin-top: 20px;
-		}
-		.form-control {
-			margin-bottom: 5px;
+	<meta charset="utf-8">
+	<title>Crud</title>
+	<link href="jquery-ui/jquery-ui.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<script src="jquery-ui/external/jquery/jquery.js"></script>
+	<script src="jquery-ui/jquery-ui.js"></script>
+	<script src="angular/angular.js"></script>
+	<script src="javascript/app.js"></script>
+	<script src="javascript/jquery-template.js"></script>
+	<style type="text/css">
+		td .button{
+			width: 100%;
 		}
 	</style>
-	<script src="lib/angular/angular.js"></script>
-	<script>
-		angular.module("listaTelefonica", []);
-		angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($scope) {
-			$scope.app = "Lista Telefonica";
-			$scope.contatos = [
-				{nome: "Pedro", telefone: "99998888"},
-				{nome: "Ana", telefone: "99998877"},
-				{nome: "Maria", telefone: "99998866"}
-			];
-			$scope.adicionarContato = function (contato) {
-				$scope.contatos.push(angular.copy(contato));
-				delete $scope.contato;
-			};
-		});
-	</script>
+
 </head>
-<body ng-controller="listaTelefonicaCtrl">
-	<div class="jumbotron">
-		<h3>{{app}}</h3>
-		<table class="table table-striped">
-			<tr>
-				<th>Nome</th>
-				<th>Telefone</th>
-			</tr>
-			<tr ng-repeat="contato in contatos">
-				<td>{{contato.nome}}</td>
-				<td>{{contato.telefone}}</td>
-			</tr>
-		</table>
-		<hr/>
-		<input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome"/>
-		<input class="form-control" type="text" ng-model="contato.telefone" placeholder="Telefone"/>
-		<button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)">Adicionar Contato</button>
-		{{contato}}
+<body ng-controller="crudCtrl">
+
+	<div class="accordion">
+		<h3>Cadastro</h3>
+		<div>
+			<table>
+				<tr>
+					<td>
+						<label for="nome">Nome </label>
+					</td>
+					<td>
+						<input id="nome" class="input-text" type="text" ng-model="nome" placeholder="Nome"/>
+					</td>
+				</tr>
+				<tr>
+					<td>{{nomes}}</td>
+					<td>
+						<button class="button" ng-click="salvar(nome)">Salvar Nome</button>
+					</td>
+				</tr>
+			</table>
+		</div>
 	</div>
 </body>
 </html>
-
