@@ -1,0 +1,156 @@
+<<<<<<< ede1197dad018d9a0354d5e198df91c07db11d06
+<html ng-app="listaTelefonica">
+<head>
+	<title>Lista Telefonica</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
+	<style>
+		.jumbotron {
+			width: 400px;
+			text-align: center;
+			margin-top: 20px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.table {
+			margin-top: 20px;
+		}
+		.form-control {
+			margin-bottom: 5px;
+		}
+	</style>
+	<script src="lib/angular/angular.js"></script>
+	<script>
+		angular.module("listaTelefonica", []);
+		angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($scope) {
+			$scope.app = "Lista Telefonica";
+			$scope.contatos = [
+				{nome: "Pedro", telefone: "99998888"},
+				{nome: "Ana", telefone: "99998877"},
+				{nome: "Maria", telefone: "99998866"}
+			];
+			$scope.adicionarContato = function (contato) {
+				$scope.contatos.push(angular.copy(contato));
+				delete $scope.contato;
+			};
+		});
+	</script>
+</head>
+<body ng-controller="listaTelefonicaCtrl">
+	<div class="jumbotron">
+		<h3>{{app}}</h3>
+		<table class="table table-striped">
+			<tr>
+				<th>Nome</th>
+				<th>Telefone</th>
+			</tr>
+			<tr ng-repeat="contato in contatos">
+				<td>{{contato.nome}}</td>
+				<td>{{contato.telefone}}</td>
+			</tr>
+		</table>
+		<hr/>
+		<input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome"/>
+		<input class="form-control" type="text" ng-model="contato.telefone" placeholder="Telefone"/>
+		<button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)">Adicionar Contato</button>
+		{{contato}}
+	</div>
+</body>
+</html>
+
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Bootstrap Example</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="javascript/jquery.min.js"></script>
+	<script src="javascript/bootstrap.min.js"></script>
+	<script src="angular/angular.js"></script>
+	<script type="text/javascript">
+		app = angular.module("teste", []);
+		app.controller("testeCtrl", function($scope) {
+			$scope.acao = "Cadastro";
+			$scope.nomes = [];
+
+			$scope.salvar = function (nome){
+				$scope.nomes.push(nome);
+				nome = '';
+			};
+
+			$scope.popular = function (){
+				$scope.salvar("Wesley");
+				$scope.salvar("Blade");
+				$scope.salvar("Tiririca");
+				$scope.salvar("Tirulipa");
+				$scope.salvar("Sai de Baixo");
+				$scope.salvar("Shaolin do Nordeste");
+
+			}
+		});
+
+	</script>
+</head>
+<body>
+
+	<div class="container" ng-app="teste" ng-controller="testeCtrl">
+		
+		<h2>Crud</h2>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Usuários</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="nome in nomes">
+					<td>{{nome}}</td>
+					<td>
+						<button class="btn btn-primary btn-block"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
+					</td>
+					<td>
+						<button class="btn btn-danger btn-block"><span class="glyphicon glyphicon-trash"></span> Excluir</button>
+					</td>
+				</tr>
+				
+
+			</tbody>
+			<tfoot>
+				<tr>
+					<td>
+						<button type="button" class="btn btn-info btn-lg btn-block " data-toggle="modal" data-target=" #modal-insert">Cadastrar novos usuários</button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>		
+
+		<!-- Modal -->
+		<div class="modal fade" id="modal-insert" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Cadastro de novos usuários</h4><a ng-click="popular()">(popular lista)</a>
+					</div>
+					<!-- <div class="modal-body" style="height: 150px"> -->
+					<div class="modal-body form-group col-md-4 text-center">
+						<input type="text" class="form-control" id="usr" ng-model="nome" placeholder="Nome">
+						<button type="button" class="btn btn-info btn-block" ng-click="salvar(nome)">Inserir</button>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span> Concluido</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
+>>>>>>> Atualizacao básica
